@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: countrydeployment
+  labels:
+    country: finder
+spec:
+  template:
+    metadata:
+      name: contrypod
+      labels:
+        country: finder
+    spec:
+      containers:
+        - name: countryfinder
+          image: spring-boot-country-image
+          envFrom:
+            - configMapRef:
+                name: countryconfigmap
+  selector:
+    matchLabels:
+      country: finder
