@@ -17,6 +17,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: countryconfigmap
+            - secretRef:
+                name: countrysecret
   selector:
     matchLabels:
       country: finder
